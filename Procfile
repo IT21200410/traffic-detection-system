@@ -1,0 +1,1 @@
+veb: gunicorn app:app
