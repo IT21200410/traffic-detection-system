@@ -9,7 +9,7 @@ CORS(app, support_credentials=True)
 model = pickle.load(open("example_weights_knn.pkl", "rb"))
 @app.route('/')
 def use_template():
-    return render_template('index.html')
+    return render_template('result.html')
 
 @app.route('/predict', methods = ['POST', 'GET'])
 def predict():
