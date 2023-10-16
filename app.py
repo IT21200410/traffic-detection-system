@@ -12,7 +12,7 @@ def use_template():
     return render_template('result.html')
 
 @app.route('/manuja')
-def use_template():
+def use_manuja():
     return render_template('index.html')
 
 @app.route('/predict', methods = ['POST', 'GET'])
