@@ -11,6 +11,10 @@ model = pickle.load(open("example_weights_knn.pkl", "rb"))
 def use_template():
     return render_template('result.html')
 
+@app.route('/manuja')
+def use_template():
+    return render_template('index.html')
+
 @app.route('/predict', methods = ['POST', 'GET'])
 def predict():
     input_one = request.form['1']
