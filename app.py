@@ -15,6 +15,10 @@ def use_template():
 def use_manuja():
     return render_template('index.html')
 
+@app.route('/hansi')
+def use_hansi():
+    return render_template('traffic.html')
+
 @app.route('/predict', methods = ['POST', 'GET'])
 def predict():
     input_one = request.form['1']
