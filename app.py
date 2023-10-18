@@ -6,7 +6,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
-model = pickle.load(open("example_weights_knn.pkl", "rb"))
+model = pickle.load(open("KNN_model.pkl", "rb"))
 @app.route('/')
 def use_template():
     return render_template('result.html')
@@ -18,6 +18,14 @@ def use_manuja():
 @app.route('/hansi')
 def use_hansi():
     return render_template('traffic.html')
+
+@app.route('/KNN')
+def use_knn():
+
+    input = [[2,4,5,4,5]]
+    prediction = model.predict(input)
+
+    return render_template('KNN.html', prediction_text = "The Traffic level is {}".format(prediction))
 
 @app.route('/predict', methods = ['POST', 'GET'])
 def predict():
