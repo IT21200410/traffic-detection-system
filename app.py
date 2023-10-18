@@ -22,7 +22,7 @@ def use_hansi():
 @app.route('/KNN')
 def use_knn():
 
-    input = [[2,4,5,4,5]]
+    input = [[1,3,3,11,2]]
     prediction = model.predict(input)
 
     return render_template('KNN.html', prediction_text = "The Traffic level is {}".format(prediction))
@@ -49,4 +49,7 @@ def predict():
         return render_template('result.html', pred = f'You have a low chance of diabetes which is currently considered')
     
 
+
+if __name__ == '__main__':
+    app.run(debug = True)
 
