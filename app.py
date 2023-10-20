@@ -23,17 +23,15 @@ def add_articles():
     return title
 
 
-
-
-@app.route('/predict_manuja', methods = ['GET', 'POST'])
+@app.route('/predict_manuja', methods = ['POST'], strict_slashes = False)
 def predict_manuja():
-    Junction = request.form['junction']
-    date = request.form['date']
+    Junction = request.json['junction']
+    date = request.json['date']
     # date = datetime.datetime.strptime(date,'%Y-%m-%d')
-    time = request.form['time']
+    time = request.json['time']
     df = preProcess(Junction, date, time)
     traffic_level = model.predict(df)
-    return render_template('result.html', pred=f'Traffic Level is {traffic_level[0]}')
+    return {traffic_level[0]}
 
 
 def preProcess(junction, date, time):
