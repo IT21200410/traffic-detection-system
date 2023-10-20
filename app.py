@@ -87,6 +87,17 @@ def use_knn():
 
     return render_template('KNN.html', prediction_text = "The Traffic level is {}".format(prediction))
 
+
+@app.route('/NaiveBayes')
+def use_NaiveBayes():
+
+    NBmodel = pickle.load(open("NaiveBayes.pkl", "rb"))
+
+    input = [[1,3,3,11,2]]
+    prediction = NBmodel.predict(input)
+
+    return render_template('KNN.html', prediction_text = "The Traffic level is {}".format(prediction))
+
     
 if __name__ == '__main__':
     app.run(debug = True)
