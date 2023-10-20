@@ -15,6 +15,16 @@ model = pickle.load(open("Randommodel.pkl", "rb"))
 def home():
     return render_template('index.html')
 
+@app.route('/add', methods = ['POST'], strict_slashes = False)
+def add_articles():
+    title = request.json['title']
+    body = request.json['body']
+
+    return title
+
+
+
+
 @app.route('/predict_manuja', methods = ['GET', 'POST'])
 def predict_manuja():
     Junction = request.form['junction']
