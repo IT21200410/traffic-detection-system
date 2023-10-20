@@ -73,9 +73,15 @@ def convertTo24H(time):
 
 
 
-@app.route('/hansi')
-def use_hansi():
-    return render_template('traffic.html')
+@app.route('/SVM')
+def use_NaiveBayes():
+
+    SVMmodel = pickle.load(open("SVM_model.pkl", "rb"))
+
+    input = [[1,3,3,11,2]]
+    prediction = SVMmodel.predict(input)
+
+    return render_template('traffic.html', prediction_text = "The Traffic level is {}".format(prediction))
 
 @app.route('/KNN')
 def use_knn():
